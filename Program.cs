@@ -30,6 +30,7 @@ namespace Matrixok
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
 
         static void F03()
@@ -43,6 +44,35 @@ namespace Matrixok
                 }
             }
             Console.WriteLine($"A mátrixban lévő elemek összege: {osszeg}");
+            Console.WriteLine();
+        }
+
+        static void F04()
+        {
+            for (int i = 0; i < sorokSzama; i++)
+            {
+                int osszeg = 0;
+                for (int j = 0; j < oszlopkSzama; j++)
+                {
+                    osszeg += szamokMatrix[i, j];
+                }
+                Console.WriteLine($"{i + 1}. sor összege: {osszeg}");
+            }
+            Console.WriteLine();
+        }
+
+        static void F05()
+        {
+            for (int j = 0; j < oszlopkSzama; j++)
+            {
+                int osszeg = 0;
+                for (int i = 0; i < sorokSzama; i++)
+                {
+                    osszeg += szamokMatrix[i, j];
+                }
+                Console.WriteLine($"{j + 1}. oszlop összege: {osszeg}");
+            }
+            Console.WriteLine();
         }
 
         static void Main(string[] args)
@@ -50,6 +80,8 @@ namespace Matrixok
             F01();
             F02();
             F03();
+            F04();
+            F05();
         }
     }
 }

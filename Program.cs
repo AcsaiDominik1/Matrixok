@@ -7,14 +7,14 @@ namespace Matrixok
         static int sorokSzama = 10;
         static int oszlopkSzama = 6;
         static int[,] szamokMatrix = new int[sorokSzama, oszlopkSzama];
-        static int[,] negyzetesMatrix = new int[10, 10];
+        static int[,] negyzetesMatrix = new int[4, 4];
         static Random r = new Random();
 
         static void F01(int[,] matrix, int min, int max)
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0;  j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
                     matrix[i, j] = r.Next(min, max + 1);
                 }
@@ -27,7 +27,7 @@ namespace Matrixok
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.Write(matrix[i, j] + " ");
+                    Console.Write($"{matrix[i, j],5}");
                 }
                 Console.WriteLine();
             }
@@ -76,6 +76,35 @@ namespace Matrixok
             Console.WriteLine();
         }
 
+        static void BalAtloOsszeg(int[,] matrix)
+        {
+            int osszeg = 0;
+            Console.Write("A bal átló: ");
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                Console.Write($"{matrix[i, i],5}");
+                osszeg += matrix[i, i];
+            }
+            Console.WriteLine();
+            Console.WriteLine($"A bal átló összege: {osszeg}");
+        }
+
+        static void JobbAtloOsszeg(int[,] matrix)
+        {
+            int osszeg = 0;
+            Console.Write("A jobb átló: ");
+            int j = matrix.GetLength(1) -1;
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                Console.Write($"{matrix[i, j],5}");
+                osszeg += matrix[i, j];
+                j--;
+            }
+            Console.WriteLine();
+            Console.WriteLine($"A jobb átló összege: {osszeg}");
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
             F01(szamokMatrix, 10, 99);
@@ -85,7 +114,17 @@ namespace Matrixok
             F05();
             Console.WriteLine("--------------------------------------------------");
             Console.WriteLine();
-            F01(negyzetesMatrix, -100, 100);
+            F01(negyzetesMatrix, 1, 9);
+            F02(negyzetesMatrix);
+            BalAtloOsszeg(negyzetesMatrix);
+            JobbAtloOsszeg(negyzetesMatrix);
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine();
+            int[,] masolat = negyzetesMatrix;
+            masolat[0, 0] = 100;
+            Console.WriteLine("A másolat elemei: ");
+            F02(masolat);
+            Console.WriteLine("A négyzetesmátrix: ");
             F02(negyzetesMatrix);
         }
     }

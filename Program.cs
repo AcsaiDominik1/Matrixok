@@ -7,26 +7,27 @@ namespace Matrixok
         static int sorokSzama = 10;
         static int oszlopkSzama = 6;
         static int[,] szamokMatrix = new int[sorokSzama, oszlopkSzama];
+        static int[,] negyzetesMatrix = new int[10, 10];
         static Random r = new Random();
 
-        static void F01()
+        static void F01(int[,] matrix, int min, int max)
         {
-            for (int i = 0; i < sorokSzama; i++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0;  j < oszlopkSzama; j++)
+                for (int j = 0;  j < matrix.GetLength(1); j++)
                 {
-                    szamokMatrix[i, j] = r.Next(10, 100);
+                    matrix[i, j] = r.Next(min, max + 1);
                 }
             }
         }
 
-        static void F02()
+        static void F02(int[,] matrix)
         {
-            for (int i = 0; i < sorokSzama; i++)
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < oszlopkSzama; j++)
+                for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.Write(szamokMatrix[i, j] + " ");
+                    Console.Write(matrix[i, j] + " ");
                 }
                 Console.WriteLine();
             }
@@ -77,11 +78,15 @@ namespace Matrixok
 
         static void Main(string[] args)
         {
-            F01();
-            F02();
+            F01(szamokMatrix, 10, 99);
+            F02(szamokMatrix);
             F03();
             F04();
             F05();
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine();
+            F01(negyzetesMatrix, -100, 100);
+            F02(negyzetesMatrix);
         }
     }
 }

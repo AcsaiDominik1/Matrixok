@@ -112,7 +112,7 @@ namespace Matrixok
             F03();
             F04();
             F05();
-            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------");
             Console.WriteLine();
             F01(negyzetesMatrix, 1, 9);
             F02(negyzetesMatrix);
